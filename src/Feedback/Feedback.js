@@ -3,6 +3,7 @@ import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 // import styles from './Profile.module.css';
 import PropTypes from 'prop-types';
 import Statistics from './Statistics/Statistics';
+import Notification from './Notification/Notification';
 
 class Feedback extends Component {
   state = {
@@ -24,6 +25,7 @@ class Feedback extends Component {
       return acc;
     });
   };
+
   countPositiveFeedbackPercentage = () => {
     return Math.round(
       100 / (this.countTotalFeedback() / this.state.goodfeedback),
@@ -38,14 +40,17 @@ class Feedback extends Component {
           // options={ }
           onLeaveFeedback={this.onLeaveFeedback}
         />
-
-        <Statistics
-          good={goodfeedback}
-          neutral={neutralfeedback}
-          bad={badfeedback}
-          total={this.countTotalFeedback}
-          positivePercentage={this.countPositiveFeedbackPercentage}
-        />
+        {goodfeedback || neutralfeedback || badfeedback ? (
+          <Statistics
+            good={goodfeedback}
+            neutral={neutralfeedback}
+            bad={badfeedback}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
+          />
+        ) : (
+          <Notification message="No feedback given"></Notification>
+        )}
       </>
     );
   }
