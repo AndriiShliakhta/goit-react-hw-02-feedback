@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 // import styles from './Profile.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Statistics from './Statistics/Statistics';
 
 class Feedback extends Component {
@@ -31,7 +31,6 @@ class Feedback extends Component {
   };
 
   render() {
-    // const { step } = this.props;
     const { goodfeedback, neutralfeedback, badfeedback } = this.state;
     return (
       <>
@@ -52,13 +51,8 @@ class Feedback extends Component {
   }
 }
 export default Feedback;
-// Profile.propTypes = {
-//   avatar: PropTypes.string,
-//   name: PropTypes.string,
-//   tag: PropTypes.string,
-//   stats: PropTypes.shape({
-//     followers: PropTypes.number,
-//     views: PropTypes.number,
-//     likes: PropTypes.number,
-//   }),
-// };
+Feedback.propTypes = {
+  goodfeedback: PropTypes.number,
+  neutralfeedback: PropTypes.number,
+  badfeedback: PropTypes.number,
+};
