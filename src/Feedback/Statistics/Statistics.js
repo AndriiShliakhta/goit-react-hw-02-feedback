@@ -1,36 +1,31 @@
-import React, { Component } from 'react';
-class Statistics extends Component {
-  render() {
-    return (
-      <>
-        <h3>Statistics</h3>
-        <div>
-          Good:
-          <span> {this.props.good}</span>
-        </div>
-        <div>
-          Neutral:
-          <span> {this.props.neutral}</span>
-        </div>
-        <div>
-          Bad:
-          <span> {this.props.bad}</span>
-        </div>
-        <div>
-          Total:
-          <span> {this.props.total()}</span>
-        </div>
-        <div>
-          Positive feedback:
-          <span>
-            {!this.props.positivePercentage()
-              ? '0'
-              : this.props.positivePercentage()}
-            %
-          </span>
-        </div>
-      </>
-    );
-  }
-}
+import React from 'react';
+import styles from './Statistics.module.css';
+
+const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
+  return (
+    <div className={styles.statistics}>
+      <div className={styles.statItems}>
+        <span>Good:</span>
+        <span> {good}</span>
+      </div>
+      <div className={styles.statItems}>
+        <span>Neutral:</span>
+        <span> {neutral}</span>
+      </div>
+      <div className={styles.statItems}>
+        <span>Bad:</span>
+        <span> {bad}</span>
+      </div>
+      <div className={styles.statItems}>
+        <span>Total:</span>
+        <span> {total()}</span>
+      </div>
+      <div className={styles.statItems}>
+        <span>Positive feedback:</span>
+        <span>{!positivePercentage() ? '0' : positivePercentage()}%</span>
+      </div>
+    </div>
+  );
+};
+
 export default Statistics;

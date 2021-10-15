@@ -1,32 +1,35 @@
-import React, { Component } from 'react';
-class FeedbackOptions extends Component {
-  render() {
-    return (
-      <>
-        <h3>Please leave feedback</h3>
-        <button
-          type="button"
-          name="goodfeedback"
-          onClick={this.props.onLeaveFeedback}
-        >
-          Good
-        </button>
-        <button
-          type="button"
-          name="neutralfeedback"
-          onClick={this.props.onLeaveFeedback}
-        >
-          Neutral
-        </button>
-        <button
-          type="button"
-          name="badfeedback"
-          onClick={this.props.onLeaveFeedback}
-        >
-          Bad
-        </button>
-      </>
-    );
-  }
-}
+import React from 'react';
+import styles from './FeedbackOptions.module.css';
+
+const FeedbackOptions = ({ onLeaveFeedback }) => {
+  return (
+    <div className={styles.buttonsContainer}>
+      <button
+        className={styles.button}
+        type="button"
+        name="good"
+        onClick={onLeaveFeedback}
+      >
+        Good
+      </button>
+      <button
+        className={styles.button}
+        type="button"
+        name="neutral"
+        onClick={onLeaveFeedback}
+      >
+        Neutral
+      </button>
+      <button
+        className={styles.button}
+        type="button"
+        name="bad"
+        onClick={onLeaveFeedback}
+      >
+        Bad
+      </button>
+    </div>
+  );
+};
+
 export default FeedbackOptions;
